@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.example.storeapp.R
 import com.example.storeapp.databinding.FragmentHomeBinding
+import com.example.storeapp.model.response.ProductsResponse
 import com.example.storeapp.view.BaseComponents.BaseFragment
 import com.example.storeapp.view.Navigators.HomeNavigator
 import com.example.storeapp.view.viewModel.fragments.HomeFragmentViewModel
@@ -20,39 +21,28 @@ class HomeFragment : BaseFragment(), HomeNavigator {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         viewModel = HomeFragmentViewModel(requireActivity(), viewLifecycleOwner, this)
-//        viewModel.(productId, requireActivity())
         binding.vm = viewModel
-
         return binding.root
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.productsAPI(requireActivity())
 
-        binding.textView.text = "aaa"
-//        viewModel.branchAPI(requireContext())
+    }
+
+    override fun onProductsResponse(response: List<ProductsResponse>) {
+        showToast(response.size.toString())
+        binding.textView.text = response[0].title
+
     }
 
     override fun showProgressBar() {
-        TODO("Not yet implemented")
+
     }
 
     override fun hideProgressBar() {
-        TODO("Not yet implemented")
+
     }
-
-//    override fun onBranchesResponse(response: BranchesResponse) {
-//        textView.text = response.data[0].name
-//        Log.d(TAG, "onBranchesResponse: $response")
-//    }
-
-//    override fun showProgressBar() {
-//        progress_circular.visibility = View.VISIBLE
-//    }
-//
-//    override fun hideProgressBar() {
-//        progress_circular.visibility = View.GONE
-//    }
-
 }

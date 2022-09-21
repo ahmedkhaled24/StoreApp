@@ -15,21 +15,21 @@ class HomeFragmentViewModel(
     private var navigator: HomeNavigator
 ): BaseViewModel(activity) {
 
-//    fun branchAPI(context: Context) {
-//        navigator.showProgressBar()
-//        mUserViewModel.branchesViewM().observe(viewLifecycleOwner) { dataResource ->
-//            // handle success
-//            dataResource.data?.getContentIfNotHandled()?.let {
-//                navigator.onBranchesResponse(it)
-//                navigator.hideProgressBar()
-//            }
-//            // handle error
-//            dataResource.error?.getContentIfNotHandled()?.let {
-//                showToast(context, "Failed")
-//                Log.d(TAG, "branchAPI: $it")
-//                navigator.hideProgressBar()
-//            }
-//        }
-//    }
+    fun productsAPI(context: Context) {
+        navigator.showProgressBar()
+        mUserViewModel.productsViewM().observe(viewLifecycleOwner) { dataResource ->
+            // handle success
+            dataResource.data?.getContentIfNotHandled()?.let {
+                navigator.onProductsResponse(it)
+                navigator.hideProgressBar()
+            }
+            // handle error
+            dataResource.error?.getContentIfNotHandled()?.let {
+                showToast(context, "Failed")
+                Log.d(TAG, "productsAPI: $it")
+                navigator.hideProgressBar()
+            }
+        }
+    }
 
 }

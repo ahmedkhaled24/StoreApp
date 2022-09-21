@@ -2,11 +2,8 @@ package com.example.storeapp.helpers
 
 object C {
 
-    /************ Complex Preference ***********/
-    const val PREF_FILE = "Carina"
-
     /************ Base Url ***********/
-    const val BASE_API = "https://testcarina.momentum-sol.com/"
+    const val BASE_API = "https://fakestoreapi.com/"
 
     /************ Errors ***********/
     const val ERROR_MESSAGE_ENGLISH = "Something went wrong, please try again"

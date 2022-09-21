@@ -1,12 +1,12 @@
 package com.example.storeapp.model
 
+import com.example.storeapp.model.response.ProductsResponse
 import io.reactivex.Single
 import retrofit2.http.GET
-import retrofit2.http.Query
+
 
 interface ApiService {
 
-//    @GET("api/branches")
-//    fun branches(@Query("lang") lang: String = C.ENGLISH): Single<BranchesResponse>
-
+    @GET("products")
+    fun getProducts() : Single<List<ProductsResponse>>
 }
