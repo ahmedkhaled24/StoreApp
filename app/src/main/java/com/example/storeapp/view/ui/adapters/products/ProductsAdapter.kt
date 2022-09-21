@@ -45,7 +45,6 @@ class ProductsAdapter(private val listener : ClickOnItemProduct) :
         this.data = data
     }
 
-
     class ProductsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             var parentItem : LinearLayout = itemView.findViewById(R.id.parentItem1)
             var imageProduct : ImageView = itemView.findViewById(R.id.product_1_iv)
