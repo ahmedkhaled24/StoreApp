@@ -14,11 +14,11 @@ open class BaseActivity: AppCompatActivity() {
         Toast.makeText(this.applicationContext, message, Toast.LENGTH_SHORT).show()
     }
 
-    override fun getBaseContext(): Context {
-        return LocalizationUtil.applyLanguageContext(super.getBaseContext(), Locale(SharedPre.getCheckOnLanguage(this)))
-    }
-
-    override fun getApplicationContext(): Context {
-        return LocalizationUtil.applyLanguageContext(super.getApplicationContext(), Locale(SharedPre.getCheckOnLanguage(this)))
-    }
+//    override fun getBaseContext(): Context {
+//        return LocalizationUtil.applyLanguageContext(super.getBaseContext(), Locale(SharedPre.getCheckOnLanguage(this)))
+//    }
+//
+//    override fun getApplicationContext(): Context {
+//        return LocalizationUtil.applyLanguageContext(super.getApplicationContext(), Locale(SharedPre.getCheckOnLanguage(this)))
+//    }
 }
