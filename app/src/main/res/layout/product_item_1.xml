@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:scaleType="fitXY"
             android:layout_height="@dimen/_150sdp"
-            android:src="@drawable/ic_launcher_background" />
+            tools:src="@drawable/ic_launcher_background" />
 
     </androidx.cardview.widget.CardView>
 

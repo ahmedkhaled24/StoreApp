@@ -43,9 +43,9 @@ class HomeFragmentViewModel(
             }
             // handle error
             dataResource.error?.getContentIfNotHandled()?.let {
-                showToast(context, "Failed")
-                Log.d(TAG, "productsAPI: $it")
                 navigator.hideProgressBar()
+                showToast(context, it)
+                Log.d(TAG, "productsAPI: $it")
             }
         }
     }

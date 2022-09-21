@@ -7,20 +7,16 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.view.animation.LayoutAnimationController
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.storeapp.R
 import com.example.storeapp.databinding.FragmentHomeBinding
 import com.example.storeapp.model.ProductData
-import com.example.storeapp.model.response.ProductsResponse
 import com.example.storeapp.view.BaseComponents.BaseFragment
 import com.example.storeapp.view.Navigators.HomeNavigator
 import com.example.storeapp.view.ui.adapters.products.ClickOnItemProduct
 import com.example.storeapp.view.ui.adapters.products.ProductsAdapter
 import com.example.storeapp.view.viewModel.fragments.HomeFragmentViewModel
-import com.example.storeapp.view.viewModel.fragments.ProductDetailsViewModel
 
 private const val TAG = "HomeFragment"
 

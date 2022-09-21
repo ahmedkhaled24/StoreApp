@@ -6,6 +6,7 @@ import com.example.storeapp.helpers.BaseObservable
 import com.example.storeapp.helpers.C
 import com.example.storeapp.helpers.Resource
 import com.example.storeapp.model.ApiService
+import com.example.storeapp.model.response.ProductDetailsResponse
 import com.example.storeapp.model.response.ProductsResponse
 import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -27,6 +28,8 @@ class UserViewModel(private val mApiService: ApiService) : BaseObservable() {
 
 
     private val _productsMutableLiveData = MutableLiveData<Resource<List<ProductsResponse>>>()
+
+    private val _productDetailsMutableLiveData = MutableLiveData<Resource<ProductDetailsResponse>>()
 
     fun productsViewM(): MutableLiveData<Resource<List<ProductsResponse>>> {
         _productsMutableLiveData.value = Resource.loading(true)
@@ -97,6 +100,74 @@ class UserViewModel(private val mApiService: ApiService) : BaseObservable() {
         return _productsMutableLiveData
     }
 
+    fun productDetailsViewM(id: Int): MutableLiveData<Resource<ProductDetailsResponse>> {
+        _productDetailsMutableLiveData.value = Resource.loading(true)
+        mApiService.getProductDetails(id)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : SingleObserver<ProductDetailsResponse> {
+                override fun onSubscribe(d: Disposable) {
+                    mDisposable.add(d)
+                }
+
+                override fun onSuccess(t: ProductDetailsResponse) {
+                    _productDetailsMutableLiveData.value = Resource.data(t)
+                }
+
+                override fun onError(e: Throwable) {
+                    var errorMessage = C.ERROR_MESSAGE_ENGLISH
+                    when (e) {
+                        is UnknownHostException, is SocketTimeoutException, is IOException -> {
+                            Log.d(TAG, "UserViewModel, onError: UnKnownHostException: ${e.message}")
+                            errorMessage = C.INTERNET_ERROR_MESSAGE_ENGLISH
+                        }
+
+                        is HttpException -> {
+                            val errorBody = e.response()!!.errorBody()
+                            when (e.code()) {
+                                401 -> {
+                                    errorBody?.string()?.let {
+                                        try {
+                                            val jObjectError = JSONObject(it)
+                                            errorMessage = jObjectError.getString("message")
+                                        } catch (e: Exception) {
+                                            Log.d(TAG, "onError: $e")
+                                        }
+                                    }
+                                }
+
+                                422 -> {
+                                    errorBody?.string()?.let {
+                                        try {
+                                            val jObjectError = JSONObject(it)
+                                            errorMessage = jObjectError.getString("message")
+                                        } catch (e: Exception) {
+                                            Log.d(TAG, "onError: $e")
+                                        }
+                                    }
+                                }
+
+                                else -> {
+                                    errorBody?.string()?.let {
+                                        try {
+                                            val jObjError = JSONObject(it).getJSONObject("errors")
+                                            errorMessage = jObjError.getString("message")
+                                        } catch (e: Exception) {
+                                            Log.d(TAG, "UserViewModel, onError: exception: $e")
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        else -> {
+                            Log.d(TAG, "UserViewModel, else: onError: Unknown Error: $e")
+                        }
+                    }
+                    _productDetailsMutableLiveData.value = Resource.error(errorMessage)
+                }
+            })
+        return _productDetailsMutableLiveData
+    }
 
 
     override fun onCleared() {
