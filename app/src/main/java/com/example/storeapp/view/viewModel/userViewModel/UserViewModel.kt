@@ -13,23 +13,19 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.RequestBody
-import org.json.JSONObject
 import retrofit2.HttpException
 import java.io.IOException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
-
 private const val TAG = "appDebug"
+
 class UserViewModel(private val mApiService: ApiService) : BaseObservable() {
     private val mDisposable = CompositeDisposable()
 
-
     private val _productsMutableLiveData = MutableLiveData<Resource<List<ProductsResponse>>>()
-
     private val _productDetailsMutableLiveData = MutableLiveData<Resource<ProductDetailsResponse>>()
+
 
     fun productsViewM(): MutableLiveData<Resource<List<ProductsResponse>>> {
         _productsMutableLiveData.value = Resource.loading(true)
@@ -54,41 +50,7 @@ class UserViewModel(private val mApiService: ApiService) : BaseObservable() {
                         }
 
                         is HttpException -> {
-                            val errorBody = e.response()!!.errorBody()
-                            when (e.code()) {
-                                401 -> {
-                                    errorBody?.string()?.let {
-                                        try {
-                                            val jObjectError = JSONObject(it)
-                                            errorMessage = jObjectError.getString("message")
-                                        } catch (e: Exception) {
-                                            Log.d(TAG, "onError: $e")
-                                        }
-                                    }
-                                }
-
-                                422 -> {
-                                    errorBody?.string()?.let {
-                                        try {
-                                            val jObjectError = JSONObject(it)
-                                            errorMessage = jObjectError.getString("message")
-                                        } catch (e: Exception) {
-                                            Log.d(TAG, "onError: $e")
-                                        }
-                                    }
-                                }
-
-                                else -> {
-                                    errorBody?.string()?.let {
-                                        try {
-                                            val jObjError = JSONObject(it).getJSONObject("errors")
-                                            errorMessage = jObjError.getString("message")
-                                        } catch (e: Exception) {
-                                            Log.d(TAG, "UserViewModel, onError: exception: $e")
-                                        }
-                                    }
-                                }
-                            }
+                            errorMessage = C.ERROR_MESSAGE_ENGLISH + e.code()
                         }
                         else -> {
                             Log.d(TAG, "UserViewModel, else: onError: Unknown Error: $e")
@@ -123,41 +85,7 @@ class UserViewModel(private val mApiService: ApiService) : BaseObservable() {
                         }
 
                         is HttpException -> {
-                            val errorBody = e.response()!!.errorBody()
-                            when (e.code()) {
-                                401 -> {
-                                    errorBody?.string()?.let {
-                                        try {
-                                            val jObjectError = JSONObject(it)
-                                            errorMessage = jObjectError.getString("message")
-                                        } catch (e: Exception) {
-                                            Log.d(TAG, "onError: $e")
-                                        }
-                                    }
-                                }
-
-                                422 -> {
-                                    errorBody?.string()?.let {
-                                        try {
-                                            val jObjectError = JSONObject(it)
-                                            errorMessage = jObjectError.getString("message")
-                                        } catch (e: Exception) {
-                                            Log.d(TAG, "onError: $e")
-                                        }
-                                    }
-                                }
-
-                                else -> {
-                                    errorBody?.string()?.let {
-                                        try {
-                                            val jObjError = JSONObject(it).getJSONObject("errors")
-                                            errorMessage = jObjError.getString("message")
-                                        } catch (e: Exception) {
-                                            Log.d(TAG, "UserViewModel, onError: exception: $e")
-                                        }
-                                    }
-                                }
-                            }
+                            errorMessage = C.ERROR_MESSAGE_ENGLISH + e.code()
                         }
                         else -> {
                             Log.d(TAG, "UserViewModel, else: onError: Unknown Error: $e")

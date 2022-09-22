@@ -34,7 +34,7 @@ class ProductDetailsFragment : BaseFragment(), ProductDetailsNavigator {
         //get product Id
         val productId: ProductDetailsFragmentArgs by navArgs()
         //call api
-        viewModel.productDetailsAPI(requireContext(), productId.id)
+        viewModel.productDetailsAPI(requireActivity(), productId.id)
 
         binding.backIcon.setOnClickListener {
             findNavController().popBackStack()

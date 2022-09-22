@@ -1,9 +1,9 @@
 package com.example.storeapp.view.viewModel.fragments
 
-import android.content.Context
 import android.util.Log
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.LifecycleOwner
+import com.example.storeapp.helpers.CustomDialog
 import com.example.storeapp.model.custom.ProductData
 import com.example.storeapp.view.Navigators.HomeNavigator
 import com.example.storeapp.view.BaseComponents.BaseViewModel
@@ -20,7 +20,7 @@ class HomeFragmentViewModel(
     private var productData: MutableList<ProductData> = ArrayList()
 
 
-    fun productsAPI(context: Context) {
+    fun productsAPI(activity: FragmentActivity) {
         navigator.showProgressBar()
         mUserViewModel.productsViewM().observe(viewLifecycleOwner) { dataResource ->
             // handle success
@@ -45,7 +45,7 @@ class HomeFragmentViewModel(
             // handle error
             dataResource.error?.getContentIfNotHandled()?.let {
                 navigator.hideProgressBar()
-                showToast(context, it)
+                CustomDialog.showSuccessDialog(activity, activity.layoutInflater, it, -1)
                 Log.d(TAG, "productsAPI: $it")
             }
         }

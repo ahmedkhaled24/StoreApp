@@ -5,4 +5,5 @@
     <string name="apparel">%s Apparel</string>
     <string name="price">$%s</string>
     <string name="num_ratings">%s Ratings</string>
+    <string name="ok">Ok</string>
 </resources>

@@ -22,17 +22,6 @@ data class Resource<T>(
             return Resource(data = Event.dataEvent(data),message = message)
         }
 
-        fun <T> paginationLoading(isPaginationLoading: Boolean): Resource<T> {
-            return Resource(paginationLoading = isPaginationLoading)
-        }
-
-        fun <T> paginationError(isPaginationError: Boolean): Resource<T> {
-            return Resource(paginationError = isPaginationError)
-        }
-
-        fun <T> exhaustedQuery(isExhaustedQuery: Boolean): Resource<T> {
-            return Resource(exhaustedQuery = isExhaustedQuery)
-        }
     }
 
 }
@@ -42,8 +31,7 @@ data class Resource<T>(
  * Used as a wrapper for data that is exposed via a LiveData that represents an event.
  */
 open class Event<out T>(private val content: T) {
-    var hasBeenHandled = false
-        private set // Allow external read but not write
+    private var hasBeenHandled = false
 
     /**
      * Returns the content and prevents its use again.
@@ -57,18 +45,12 @@ open class Event<out T>(private val content: T) {
         }
     }
 
-    /**
-     * Returns the content, even if it's already been handled.
-     */
-    fun peekContent(): T = content
 
     override fun toString(): String {
         return "Event(content=$content, hasBeenHandled=$hasBeenHandled)"
     }
 
     companion object {
-        private val TAG: String = "AppDebug"
-
         // we don't want an event if the data is null
         fun <T> dataEvent(data: T?): Event<T>? {
             data?.let {

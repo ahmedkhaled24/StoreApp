@@ -1,11 +1,9 @@
 package com.example.storeapp.view.viewModel.fragments
 
-import android.content.Context
 import android.util.Log
-import android.view.View
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.LifecycleOwner
-import androidx.navigation.findNavController
+import com.example.storeapp.helpers.CustomDialog
 import com.example.storeapp.model.custom.ProductData
 import com.example.storeapp.view.BaseComponents.BaseViewModel
 import com.example.storeapp.view.Navigators.ProductDetailsNavigator
@@ -21,7 +19,7 @@ class ProductDetailsViewModel(
     //custom product
     private lateinit var productData: ProductData
 
-    fun productDetailsAPI(context: Context, id: Int) {
+    fun productDetailsAPI(activity: FragmentActivity, id: Int) {
         navigator.showProgressBar()
         mUserViewModel.productDetailsViewM(id).observe(viewLifecycleOwner) { dataResource ->
             // handle success
@@ -44,15 +42,9 @@ class ProductDetailsViewModel(
             // handle error
             dataResource.error?.getContentIfNotHandled()?.let {
                 navigator.hideProgressBar()
-                showToast(context, it)
+                CustomDialog.showSuccessDialog(activity, activity.layoutInflater, it, -1)
                 Log.d(TAG, "productDetailsAPI: $it")
             }
         }
     }
-
-//    fun backClicked(v: View) {
-//        val activity = v.context as FragmentActivity
-////        activity.onNavigateUp()
-//    }
-
 }
