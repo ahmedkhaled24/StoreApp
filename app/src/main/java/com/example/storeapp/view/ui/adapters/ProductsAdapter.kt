@@ -51,3 +51,7 @@ class ProductsAdapter(private val listener : ClickOnItemProduct) :
     }
 
 }
+
+interface ClickOnItemProduct {
+    fun clickOnParentItem(id: Int)
+}

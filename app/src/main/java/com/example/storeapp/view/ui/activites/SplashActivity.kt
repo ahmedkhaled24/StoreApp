@@ -22,6 +22,6 @@ class SplashActivity : BaseActivity() {
         Executors.newSingleThreadScheduledExecutor().schedule({
             startActivity(Intent(this, MainActivity::class.java))
             finish()
-        }, 3, TimeUnit.SECONDS)
+        }, 2, TimeUnit.SECONDS)
     }
 }
