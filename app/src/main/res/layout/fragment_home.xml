@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
+        android:background="@color/white"
         android:orientation="vertical"
         tools:context=".view.ui.fragments.HomeFragment">
 
@@ -41,23 +42,46 @@
                     android:layout_centerInParent="true"
                     android:layout_gravity="center"
                     android:fontFamily="@font/tenor_sans_regular"
-                    android:text="Products"
+                    android:text="@string/products"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/_17ssp" />
 
 
             </androidx.cardview.widget.CardView>
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/relativeLayout"
+                app:layout_constraintStart_toStartOf="@+id/relativeLayout"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+                app:layout_constraintVertical_bias="0.0">
+
+                <TextView
+                    android:id="@+id/numOfApparel_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/tenor_sans_regular"
+                    tools:text="8 Apparel"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14sdp" />
+
+            </RelativeLayout>
 
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_products"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_8sdp"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout2"
                 app:spanCount="2"
                 tools:itemCount="15"
                 tools:listitem="@layout/product_item_1" />

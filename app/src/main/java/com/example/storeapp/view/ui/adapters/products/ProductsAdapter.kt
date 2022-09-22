@@ -10,7 +10,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.storeapp.R
-import com.example.storeapp.model.ProductData
+import com.example.storeapp.model.custom.ProductData
 import com.squareup.picasso.Picasso
 
 class ProductsAdapter(private val listener : ClickOnItemProduct) :
@@ -30,7 +30,7 @@ class ProductsAdapter(private val listener : ClickOnItemProduct) :
 
         Picasso.get().load(data[position].image).into(holder.imageProduct)
         holder.title.text = data[position].title
-        holder.price.text = "$"+data[position].price
+        holder.price.text = context.getString(R.string.price, data[position].price.toString())
 
         holder.parentItem.setOnClickListener{
             listener.clickOnParentItem(data[position].id)

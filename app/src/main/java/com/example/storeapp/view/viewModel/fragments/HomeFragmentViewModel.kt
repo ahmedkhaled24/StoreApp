@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.Log
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.LifecycleOwner
-import com.example.storeapp.model.ProductData
+import com.example.storeapp.model.custom.ProductData
 import com.example.storeapp.view.Navigators.HomeNavigator
 import com.example.storeapp.view.BaseComponents.BaseViewModel
 
@@ -32,6 +32,7 @@ class HomeFragmentViewModel(
                                 response[i].id,
                                 response[i].image,
                                 response[i].title,
+                                null,
                                 response[i].price
                             )
                         )

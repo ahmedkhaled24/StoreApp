@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
+        android:background="@color/white"
         android:orientation="vertical"
         tools:context=".view.ui.fragments.ProductDetailsFragment">
 
@@ -29,15 +30,40 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0">
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_gravity="center"
-                android:fontFamily="@font/tenor_sans_regular"
-                android:text="Product Details"
-                android:textSize="@dimen/_17ssp" />
+                <ImageView
+                    android:id="@+id/backIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@drawable/ic_back"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/tenor_sans_regular"
+                    android:text="@string/product_details"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_17ssp"
+                    app:layout_constraintBottom_toBottomOf="@+id/backIcon"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/backIcon" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         </androidx.cardview.widget.CardView>
@@ -62,9 +88,10 @@
 
                 <ImageView
                     android:id="@+id/image_productDetails"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_400sdp"
+                    android:layout_width="@dimen/_240sdp"
+                    android:layout_height="@dimen/_300sdp"
                     android:scaleType="fitXY"
+                    android:layout_gravity="center_horizontal"
                     tools:src="@drawable/ic_launcher_background" />
 
 
@@ -75,20 +102,54 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:fontFamily="@font/tenor_sans_regular"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_18sdp"
-                    android:layout_gravity="center_horizontal"
+                    android:textSize="@dimen/_16sdp"
                     tools:text="Title" />
+
+                <TextView
+                    android:id="@+id/description_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:fontFamily="@font/tenor_sans_regular"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13sdp"
+                    tools:text="description" />
 
                 <TextView
                     android:id="@+id/price_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_6sdp"
                     android:fontFamily="@font/tenor_sans_regular"
                     android:textColor="@color/orange"
-                    android:textSize="@dimen/_18sdp"
                     android:layout_gravity="center_horizontal"
+                    android:textSize="@dimen/_15sdp"
                     tools:text="$120" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="@dimen/_6sdp">
+
+                    <ImageView
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:src="@drawable/ic_star" />
+
+                    <TextView
+                        android:id="@+id/rate_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/tenor_sans_regular"
+                        android:textSize="@dimen/_15sdp"
+                        tools:text="4.8 Ratings" />
+
+                </LinearLayout>
+
 
 
             </LinearLayout>

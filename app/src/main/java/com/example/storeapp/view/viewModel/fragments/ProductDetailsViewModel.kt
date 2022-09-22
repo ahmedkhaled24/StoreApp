@@ -2,9 +2,11 @@ package com.example.storeapp.view.viewModel.fragments
 
 import android.content.Context
 import android.util.Log
+import android.view.View
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.LifecycleOwner
-import com.example.storeapp.model.ProductData
+import androidx.navigation.findNavController
+import com.example.storeapp.model.custom.ProductData
 import com.example.storeapp.view.BaseComponents.BaseViewModel
 import com.example.storeapp.view.Navigators.ProductDetailsNavigator
 
@@ -26,7 +28,14 @@ class ProductDetailsViewModel(
             dataResource.data?.getContentIfNotHandled()?.let { response ->
                 // set data in data class
                 productData =
-                    ProductData(response.id, response.image, response.title, response.price)
+                    ProductData(
+                        response.id,
+                        response.image,
+                        response.title,
+                        response.description,
+                        response.price,
+                        response.rating.rate
+                    )
                 // send data for views by interface
                 navigator.onProductDetailsResponse(productData)
                 //hide progressbar
@@ -40,5 +49,10 @@ class ProductDetailsViewModel(
             }
         }
     }
+
+//    fun backClicked(v: View) {
+//        val activity = v.context as FragmentActivity
+////        activity.onNavigateUp()
+//    }
 
 }

@@ -11,18 +11,16 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.storeapp.R
 import com.example.storeapp.databinding.FragmentHomeBinding
-import com.example.storeapp.model.ProductData
+import com.example.storeapp.model.custom.ProductData
 import com.example.storeapp.view.BaseComponents.BaseFragment
 import com.example.storeapp.view.Navigators.HomeNavigator
 import com.example.storeapp.view.ui.adapters.products.ClickOnItemProduct
 import com.example.storeapp.view.ui.adapters.products.ProductsAdapter
 import com.example.storeapp.view.viewModel.fragments.HomeFragmentViewModel
 
-private const val TAG = "HomeFragment"
-
 class HomeFragment : BaseFragment(), HomeNavigator, ClickOnItemProduct {
 
-    lateinit var binding: FragmentHomeBinding
+    private lateinit var binding: FragmentHomeBinding
     private lateinit var viewModel: HomeFragmentViewModel
     private lateinit var productsAdapter: ProductsAdapter
 
@@ -51,6 +49,7 @@ class HomeFragment : BaseFragment(), HomeNavigator, ClickOnItemProduct {
 
 
     override fun onProductsResponse(response: MutableList<ProductData>) {
+        binding.numOfApparelTv.text = getString(R.string.apparel, response.size.toString())
         productsRecycler(response)
     }
 
