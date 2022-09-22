@@ -1,6 +1,5 @@
 package com.example.storeapp.view.ui.adapters.products
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -21,11 +20,10 @@ class ProductsAdapter(private val listener : ClickOnItemProduct) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductsViewHolder {
         context = parent.context
-        val itemView: View = LayoutInflater.from(parent.context).inflate(R.layout.product_item_1, parent, false)
+        val itemView: View = LayoutInflater.from(parent.context).inflate(R.layout.product_item, parent, false)
         return ProductsViewHolder(itemView)
     }
 
-    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ProductsViewHolder, position: Int) {
 
         Picasso.get().load(data[position].image).into(holder.imageProduct)
@@ -46,10 +44,10 @@ class ProductsAdapter(private val listener : ClickOnItemProduct) :
     }
 
     class ProductsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            var parentItem : LinearLayout = itemView.findViewById(R.id.parentItem1)
-            var imageProduct : ImageView = itemView.findViewById(R.id.product_1_iv)
-            var title : TextView = itemView.findViewById(R.id.title_tv1)
-            var price : TextView = itemView.findViewById(R.id.price_tv1)
+            var parentItem : LinearLayout = itemView.findViewById(R.id.parentItem)
+            var imageProduct : ImageView = itemView.findViewById(R.id.product_iv)
+            var title : TextView = itemView.findViewById(R.id.title_tv)
+            var price : TextView = itemView.findViewById(R.id.price_tv)
     }
 
 }

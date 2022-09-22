@@ -3,7 +3,6 @@ package com.example.storeapp.view.ui.activites
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import com.example.storeapp.MainActivity
 import com.example.storeapp.R
 import com.example.storeapp.view.BaseComponents.BaseActivity
 import java.util.concurrent.Executors

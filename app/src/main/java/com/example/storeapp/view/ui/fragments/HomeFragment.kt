@@ -24,7 +24,11 @@ class HomeFragment : BaseFragment(), HomeNavigator, ClickOnItemProduct {
     private lateinit var viewModel: HomeFragmentViewModel
     private lateinit var productsAdapter: ProductsAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         viewModel = HomeFragmentViewModel(requireActivity(), viewLifecycleOwner, this)
         binding.vm = viewModel
@@ -35,17 +39,20 @@ class HomeFragment : BaseFragment(), HomeNavigator, ClickOnItemProduct {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.productsAPI(requireActivity())
-
     }
 
     private fun productsRecycler(data: MutableList<ProductData>) {
         productsAdapter = ProductsAdapter(this)
         productsAdapter.setData(data)
-        binding.recyclerProducts.layoutManager = GridLayoutManager(binding.recyclerProducts.context, 2, GridLayoutManager.VERTICAL, false)
+        binding.recyclerProducts.layoutManager = GridLayoutManager(
+            binding.recyclerProducts.context,
+            2,
+            GridLayoutManager.VERTICAL,
+            false
+        )
         binding.recyclerProducts.adapter = productsAdapter
         runAnimationAgain()
     }
-
 
 
     override fun onProductsResponse(response: MutableList<ProductData>) {
