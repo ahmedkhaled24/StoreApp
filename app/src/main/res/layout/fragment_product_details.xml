@@ -89,7 +89,7 @@
                 <ImageView
                     android:id="@+id/image_productDetails"
                     android:layout_width="@dimen/_240sdp"
-                    android:layout_height="@dimen/_300sdp"
+                    android:layout_height="@dimen/_320sdp"
                     android:scaleType="fitXY"
                     android:layout_gravity="center_horizontal"
                     tools:src="@drawable/ic_launcher_background" />
