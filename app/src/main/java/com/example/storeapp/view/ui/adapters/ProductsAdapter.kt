@@ -1,5 +1,6 @@
 package com.example.storeapp.view.ui.adapters.products
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -39,8 +40,10 @@ class ProductsAdapter(private val listener : ClickOnItemProduct) :
         return data.size
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(data: MutableList<ProductData>) {
         this.data = data
+        notifyDataSetChanged()
     }
 
     class ProductsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

@@ -25,7 +25,7 @@
             android:layout_height="match_parent">
 
 
-            <RelativeLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/relativeLayout"
                 android:background="@color/white"
                 android:layout_width="match_parent"
@@ -34,16 +34,71 @@
 
 
                 <TextView
+                    android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:fontFamily="@font/tenor_sans_regular"
                     android:text="@string/products"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_17ssp" />
+                    android:textSize="@dimen/_17ssp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/searchIv"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:src="@drawable/ic_search"
+                    android:padding="@dimen/_7sdp"
+                    android:layout_marginEnd="@dimen/_30sdp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/textView"
+                    app:layout_constraintTop_toTopOf="@+id/textView" />
+
+                <ImageView
+                    android:id="@+id/closeSearchIv"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:src="@drawable/close"
+                    android:padding="@dimen/_7sdp"
+                    android:visibility="gone"
+                    android:layout_marginEnd="@dimen/_30sdp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/textView"
+                    app:layout_constraintTop_toTopOf="@+id/textView" />
 
 
-            </RelativeLayout>
+
+                <EditText
+                    android:id="@+id/editTextSearch"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/searchview_backgound"
+                    android:hint="@string/search"
+                    android:textColorHint="@color/lightGray"
+                    android:imeOptions="actionGo"
+                    android:lines="1"
+                    android:inputType="text"
+                    android:visibility="gone"
+                    android:padding="@dimen/_3sdp"
+                    android:textSize="@dimen/_14ssp"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="RtlSymmetry" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             <androidx.core.widget.NestedScrollView
