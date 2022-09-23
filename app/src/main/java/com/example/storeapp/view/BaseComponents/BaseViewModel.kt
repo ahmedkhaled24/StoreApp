@@ -18,11 +18,4 @@ open class BaseViewModel(activity: FragmentActivity): ViewModel(){
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 
-//    fun showOkAlertDialog(context:Context,title:String,message:String){
-//        val alertDialog: AlertDialog = AlertDialog.Builder(context).create()
-//        alertDialog.setTitle(title)
-//        alertDialog.setMessage(message)
-//        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Ok") { dialog, _ -> dialog.dismiss() }
-//        alertDialog.show()
-//    }
 }

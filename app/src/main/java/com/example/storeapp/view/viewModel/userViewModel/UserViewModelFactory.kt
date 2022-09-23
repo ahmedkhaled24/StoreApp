@@ -2,7 +2,7 @@ package com.example.storeapp.view.viewModel.userViewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.storeapp.model.ApiService
+import com.example.storeapp.data.ApiService
 
 class UserViewModelFactory(private val userApiService: ApiService) : ViewModelProvider.Factory {
 

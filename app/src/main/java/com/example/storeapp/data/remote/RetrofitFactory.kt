@@ -4,7 +4,7 @@ import android.util.Log
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
 import com.example.storeapp.helpers.C
-import com.example.storeapp.model.ApiService
+import com.example.storeapp.data.ApiService
 import okhttp3.ConnectionSpec
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

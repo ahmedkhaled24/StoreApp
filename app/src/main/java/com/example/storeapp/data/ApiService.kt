@@ -1,4 +1,4 @@
-package com.example.storeapp.model
+package com.example.storeapp.data
 
 import com.example.storeapp.model.response.ProductDetailsResponse
 import com.example.storeapp.model.response.ProductsResponse

@@ -54,13 +54,16 @@ class HomeFragment : BaseFragment(), HomeNavigator, ClickOnItemProduct {
         productsRecycler(response)
     }
 
+
     override fun showProgressBar() {
         binding.progressLayoutId.visibility = View.VISIBLE
     }
 
+
     override fun hideProgressBar() {
         binding.progressLayoutId.visibility = View.GONE
     }
+
 
     private fun productsRecycler(data: MutableList<ProductData>) {
         productsAdapter = ProductsAdapter(this)
@@ -72,11 +75,7 @@ class HomeFragment : BaseFragment(), HomeNavigator, ClickOnItemProduct {
             false
         )
         binding.recyclerProducts.adapter = productsAdapter
-        runAnimationAgain()
-    }
-
-
-    private fun runAnimationAgain() {
+        //add animation
         val controller: LayoutAnimationController = AnimationUtils.loadLayoutAnimation(requireContext(),
             R.anim.layout_animation_down_to_up)
         binding.recyclerProducts.layoutAnimation = controller

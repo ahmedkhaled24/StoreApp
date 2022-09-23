@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.storeapp.helpers.BaseObservable
 import com.example.storeapp.helpers.C
 import com.example.storeapp.helpers.Resource
-import com.example.storeapp.model.ApiService
+import com.example.storeapp.data.ApiService
 import com.example.storeapp.model.response.ProductDetailsResponse
 import com.example.storeapp.model.response.ProductsResponse
 import io.reactivex.SingleObserver
